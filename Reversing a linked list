@@ -1,0 +1,74 @@
+#include<iostream>
+using namespace std;
+
+class Node {
+public:
+	int data;
+	Node* next;
+};
+
+int main()
+{
+	int i,pos;
+
+	Node *head = NULL;
+	Node *first = NULL;
+	Node *second = NULL;
+	Node *tail = NULL;
+	Node *temp = NULL;
+	Node *prenode = NULL;
+	Node *current = NULL;
+	Node *oneplus = NULL;
+
+	head = new Node();
+	first = new Node();
+	second = new Node();
+	tail = new Node();
+	temp = new Node();
+	prenode = new Node();
+	current = new Node();
+	oneplus = new Node();
+
+	head->data = 10;
+	head->next = first;
+
+	first->data =20 ;
+	first->next =second ;
+
+	second->data =30 ;
+	second->next =tail ;
+
+	tail->data = 40 ;
+	tail->next =NULL ;
+
+	temp = head;
+
+	cout << "Before Reversing : ";
+
+	while (temp != NULL)
+	{
+		cout << temp->data<<" ";
+		temp = temp->next;
+	}
+
+	current = oneplus = head;
+
+	while(oneplus!=NULL)
+    {
+        oneplus = oneplus->next;
+        current->next = prenode;
+        prenode = current;
+        current = oneplus;
+    }
+	cout << "After reversing : ";
+
+	head = prenode;
+	temp = head;
+
+	while (temp!= NULL)
+	{
+		cout << temp->data<<" ";
+		temp = temp->next;
+	}
+
+}
