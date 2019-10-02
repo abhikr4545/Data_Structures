@@ -1,0 +1,71 @@
+#include<iostream>
+using namespace std;
+
+class Node {
+public:
+	int data;
+	Node* next;
+};
+
+int main()
+{
+	Node *head = NULL;
+	Node *first = NULL;
+	Node *second = NULL;
+	Node *tail = NULL;
+	Node *temp = NULL;
+	Node *prenode = NULL;
+
+	head = new Node();
+	first = new Node();
+	second = new Node();
+	tail = new Node();
+	temp = new Node();
+	prenode = new Node();
+
+	head->data = 10;
+	head->next = first;
+
+	first->data =20 ;
+	first->next =second ;
+
+	second->data =30 ;
+	second->next =tail ;
+
+	tail->data = 40 ;
+	tail->next =NULL ;
+
+	temp = head;
+
+	cout << "List before deletion : ";
+
+	while (temp != NULL)
+	{
+		cout << temp->data<<" ";
+		temp = temp->next;
+	}
+
+	cout << "\n";
+	temp = head;
+
+	while (temp!= tail)
+
+	{
+		prenode = temp;
+		temp = temp->next;
+	}
+
+	prenode->next = NULL;
+	tail = prenode;
+
+	cout << "List after deletion : ";
+
+	temp = head;
+
+	while (temp!= NULL)
+	{
+		cout << temp->data<<" ";
+		temp = temp->next;
+	}
+
+}
