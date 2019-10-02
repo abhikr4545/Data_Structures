@@ -1,0 +1,59 @@
+#include<iostream>
+using namespace std;
+
+class Node {
+public:
+	int data;
+	Node* next;
+};
+
+int main()
+{
+	int value;
+
+	Node* head = NULL;
+	Node* second = NULL;
+	Node* third = NULL;
+	Node* tail = NULL;
+	Node* temp = NULL;
+	
+
+	head = new Node();
+	second = new Node();
+	third = new Node();
+	tail = new Node();
+	temp = new Node();
+
+	head->data = 10;
+	head->next = second;
+
+	second->data = 20;
+	second->next = tail;
+
+	tail->data = 30;
+	tail->next = NULL;
+
+	temp = head;
+
+	cout << "List before insertion : ";
+
+	while (temp != NULL)
+	{
+		cout << temp->data << " ";
+		temp = temp->next;
+	}
+
+	cout << "\n List after insertiion : ";
+
+	third->data = 5;
+	third->next = head;
+	head = third;
+
+	temp = head;
+
+	while (temp != NULL)
+	{
+		cout << temp->data << " ";
+		temp = temp->next;
+	}
+}
