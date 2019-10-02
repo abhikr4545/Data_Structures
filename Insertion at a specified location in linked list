@@ -1,0 +1,71 @@
+#include<iostream>
+using namespace std;
+
+class Node {
+public:
+	int data;
+	Node* next;
+};
+
+int main()
+{
+	int value,pos;
+
+	Node* head = NULL;
+	Node* second = NULL;
+	Node* third = NULL;
+	Node* tail = NULL;
+	Node* temp = NULL;
+
+
+	head = new Node();
+	second = new Node();
+	third = new Node();
+	tail = new Node();
+	temp = new Node();
+
+	head->data = 10;
+	head->next = second;
+
+	second->data = 20;
+	second->next = tail;
+
+	tail->data = 30;
+	tail->next = NULL;
+
+	cout << "Enter the position you want to enter data\n";
+	cin >> pos;
+
+	temp = head;
+
+	cout << "List before insertion : ";
+
+	while (temp != NULL)
+	{
+		cout << temp->data << " ";
+		temp = temp->next;
+	}
+
+
+	temp = head;
+	for (int i = 0; i < pos - 1; i++)
+	{
+		temp = temp->next;
+	}
+
+	third->data = 25;
+	//linking the new node with the previous and next
+	third->next = temp->next;
+	temp->next = third;
+
+	cout << "\nList after insertion : ";
+
+	temp = head;
+
+	while (temp != NULL)
+	{
+		cout << temp->data << " ";
+		temp = temp->next;
+	}
+
+}
