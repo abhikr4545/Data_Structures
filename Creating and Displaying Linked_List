@@ -1,0 +1,47 @@
+ #include <iostream> 
+using namespace std;
+
+class Node {
+public:
+	int data;
+	Node* next;
+}*first,*head,*tail,*temp;
+
+int main()
+{
+	cout << "Enter data\n";
+	int num;
+	char ch;
+	do
+	{
+		first = new Node();
+		cin >> num;
+		first->data = num;
+		first->next = NULL;
+
+		if (head == NULL)
+		{
+			head = first;
+			tail = first;
+		}
+
+		else
+		{
+			tail->next = first;
+			tail = first;
+		}
+
+		cout << "Press Y to enter more data\n";
+		cout << "Press N to stop entering data\n";
+		cin >> ch;
+	} while (ch == 'y' || ch == 'Y');
+
+	temp = head;
+	while (temp != NULL)
+	{
+		cout << temp->data << "\n";
+		temp = temp->next;
+	}
+
+	return 0;
+}
