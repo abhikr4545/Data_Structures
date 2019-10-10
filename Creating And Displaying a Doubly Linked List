@@ -1,0 +1,83 @@
+#include<iostream>
+using namespace std;
+
+class Node {
+public:
+	Node* prev;
+	int data;
+	Node* next;
+}*head, * first, * tail, * temp, * insert, * back;
+
+void create() {
+	int num, i, value;
+	cout << "Enter the number of terms you want to enter\n";
+	cin >> num;
+
+	for (i = 0; i < num; i++)
+	{
+		cin >> value;
+		first = new Node();
+
+		first->data = value;
+		first->next = NULL;
+		first->prev = NULL;
+
+		if (head == NULL)
+		{
+			head = first;
+			tail = first;
+		}
+
+		else
+		{
+			first->prev = tail;
+			tail->next = first;
+			tail = first;
+		}
+
+	}
+}
+
+void display() {
+	int pos;
+	insert = new Node();
+	temp = head;
+
+	cout << "List before deletion : \n";
+	
+	while (temp != NULL)
+	{
+		cout << temp->data << " ";
+		temp = temp->next;
+	}
+
+	temp = head;
+
+	cout << "\nEnter the delete position\n";
+	cin >> pos;
+
+	for (int i = 0; i < pos; i++)
+	{
+		back = temp;
+		temp = temp->next;
+	}
+
+	back->next = temp->next;
+	temp->next->prev = back;
+
+	cout << "\nList after deletion : \n";
+
+	temp = head;
+
+	while (temp != NULL)
+	{
+		cout << temp->data << " ";
+		temp = temp->next;
+	}
+}
+
+int main()
+{	
+	create();
+	display();	
+}
