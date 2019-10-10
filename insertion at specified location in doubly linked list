@@ -1,0 +1,82 @@
+#include<iostream>
+using namespace std;
+
+class Node {
+public:
+	Node* prev;
+	int data;
+	Node* next;
+}*first,*head,*tail,*temp,*back;
+
+void create() {
+	int num, i, value;
+
+	cout << "Enter the number of elements\n";
+	cin >> num;
+	cout << "Enter value\n";
+	for(i=0;i<num;i++)
+	{ 
+		cin >> value;
+		first = new Node();
+		first -> prev = NULL;
+		first->data = value;
+		first->next = NULL;
+
+		if (head == NULL)
+		{
+			head = first;
+			tail = first;
+		}
+
+		else
+		{
+			tail->next = first;
+			first->prev = tail;
+			tail = first;
+		}
+
+	}
+}
+
+void display() {
+	temp = head;
+	while (temp != NULL) {
+		cout << temp->data << " ";
+		temp = temp->next;
+	}
+
+	cout << "\n";
+}
+
+void insert() {
+	int pos, i, x;
+	cout << "Enter the position you want to enter\n";
+	cin >> pos;
+
+	temp = head;
+
+	for (i = 0; i < pos ; i++)
+	{
+		back = temp;
+		temp = temp->next;
+	}
+
+	cout << "Enter element you want to enter\n";
+	cin >> x;
+
+	first = new Node();
+	first->prev = back;
+	back->next = first;
+	first->data = x;
+	first->next = temp;
+	temp->prev = first;
+
+	
+}
+
+int main() {
+	create();
+	display();
+	insert();
+	display();
+}
