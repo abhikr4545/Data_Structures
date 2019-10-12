@@ -1,0 +1,77 @@
+#include<iostream>
+using namespace std;
+
+class Node{
+public:
+    int data;
+    Node* next;
+}*fron,*temp,*first,*rear;
+
+void Enqueue(){
+    int num;
+    cout << "Enter element\n";
+    cin >> num;
+
+    first = new Node();
+    first->data = num;
+    first->next = NULL;
+
+    if(fron==NULL){
+        fron = first;
+        rear = first;
+    }
+
+    else{
+        rear->next = first;
+        rear = first;
+    }
+}
+
+void Deque()
+{
+    int value;
+    value = fron->data;
+    temp  = fron;
+
+    if(fron==NULL)
+        cout << "Stack is empty\n";
+    else{
+
+        cout << "Element deleted :" << value <<endl;
+        fron = fron->next;
+        temp->next = NULL;
+    }
+}
+
+void display()
+{
+    temp = fron;
+
+    while(temp!=NULL)
+    {
+        cout << temp->data <<" ";
+        temp = temp->next;
+    }
+}
+
+int main()
+{
+    int i,x;
+
+    cout << " Enter the number of elements\n";
+    cin >> x;
+
+    for(i=0;i<x;i++)
+    {
+        Enqueue();
+    }
+
+    display();
+
+    cout<<"\n";
+
+     Deque();
+
+     display();
+
+}
