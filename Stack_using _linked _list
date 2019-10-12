@@ -1,0 +1,78 @@
+#include<iostream>
+using namespace std;
+
+class Node{
+public:
+    int data;
+    Node* next;
+}*top,*temp,*first;
+
+void push(){
+    int num;
+    cout << "Enter element\n";
+    cin >> num;
+
+    first = new Node();
+
+
+    if(top==NULL){
+        first->data = num;
+        first->next = NULL;
+        top=first;
+    }
+
+    else{
+        first->data = num;
+        first->next = top;
+        top = first;
+    }
+}
+
+void pop()
+{
+    int value;
+    value = top->data;
+    temp  = top;
+
+    if(top==NULL)
+        cout << "Stack is empty\n";
+    else{
+
+        cout << "Element deleted :" << value <<endl;
+        top = top->next;
+        temp->next = NULL;
+    }
+}
+
+void display()
+{
+    temp = top;
+
+    while(temp!=NULL)
+    {
+        cout << temp->data <<" ";
+        temp = temp->next;
+    }
+}
+
+int main()
+{
+    int i,x;
+
+    cout << " Enter the number of elements\n";
+    cin >> x;
+
+    for(i=0;i<x;i++)
+    {
+        push();
+    }
+
+    display();
+
+    cout<<"\n";
+    
+     pop();
+
+     display();
+
+}
