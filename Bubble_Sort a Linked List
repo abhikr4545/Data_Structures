@@ -1,0 +1,66 @@
+#include <iostream>
+using namespace std;
+
+class Node {
+public:
+	int data;
+	Node* next;
+}*first,*head,*tail,*temp,*one,*two;
+
+int main()
+{
+	cout << "Enter the number of element\n";
+	int num,coun,hold,number=0;
+	cin>>coun;
+
+	for(int i=0;i<coun;i++){
+		first = new Node();
+		cin >> num;
+		first->data = num;
+		first->next = NULL;
+
+		if (head == NULL)
+		{
+			head = first;
+			tail = first;
+		}
+
+		else
+		{
+			tail->next = first;
+			tail = first;
+		}
+	}
+
+	temp = head;
+	while (temp != NULL)
+	{
+		cout << temp->data << " ";
+		temp = temp->next;
+		number++;
+	}
+
+	temp = head;
+	one = head;
+
+	cout<<"\nList after changing\n";
+
+	for(one=head;one!=NULL;one=one->next){
+        for(two=one->next;two!=NULL;two=two->next){
+            if(one->data > two->data){
+                hold = one->data;
+            one->data = two->data;
+            two->data = hold;
+            }
+        }
+	}
+
+    temp = head;
+    while(temp!=NULL)
+    {
+        cout<<temp->data<<" ";
+        temp=temp->next;
+    }
+
+	return 0;
+}
